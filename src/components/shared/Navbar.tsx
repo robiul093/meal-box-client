@@ -52,10 +52,10 @@ export default function Navbar() {
                     /> */}
 
                     {
-                        links.map((link, idx) => <Link 
-                        key={idx}
-                        href={link.path}
-                        className='mr-5'
+                        links.map((link, idx) => <Link
+                            key={idx}
+                            href={link.path}
+                            className='mr-5'
                         >{link.name}
                         </Link>)
                     }
@@ -76,7 +76,9 @@ export default function Navbar() {
                                 <DropdownMenuContent>
                                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                                     <DropdownMenuSeparator />
-                                    <DropdownMenuItem>Profile</DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                        <Link href={'/profile'}>Profile</Link>
+                                    </DropdownMenuItem>
                                     <DropdownMenuItem>
                                         <Link href={`${user?.role}`}>Dashboard</Link>
                                     </DropdownMenuItem>
