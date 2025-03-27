@@ -4,6 +4,7 @@ import { useUser } from "@/context/UserContext";
 import { KeyRound, Mail, Mailbox, PenSquare, UserRound } from "lucide-react";
 import Image from "next/image";
 import profile from "../../assets/profile.png";
+import { EditModal } from "@/components/ui/core/NMEditModal";
 
 export default function Profile() {
     const { user } = useUser()
@@ -31,7 +32,7 @@ export default function Profile() {
                             <UserRound />
                             <p className="text-xl">{user?.name}</p>
                         </div>
-                        <PenSquare />
+                        <EditModal field="name" defaultValue={user?.name} lable="Name" />
                     </div>
 
                     <div className="flex justify-between items-center py-5 border-b-2 border-white">
@@ -39,7 +40,7 @@ export default function Profile() {
                             <Mail />
                             <p className="text-lg">{user?.email}</p>
                         </div>
-                        <PenSquare />
+                        <EditModal field="email" defaultValue={user?.email} lable="Email"  />
                     </div>
 
                     <div className="flex justify-between items-center py-5 border-white">

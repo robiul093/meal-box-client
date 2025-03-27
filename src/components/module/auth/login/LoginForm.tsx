@@ -39,7 +39,7 @@ export default function LoginForm() {
                     router.push(redirect)
                 }
                 else {
-                    router.push('/')
+                    router.push('/profile')
                 }
             }
             else {
