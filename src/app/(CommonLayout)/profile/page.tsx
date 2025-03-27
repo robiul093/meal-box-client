@@ -1,10 +1,11 @@
 'use client'
 
 import { useUser } from "@/context/UserContext";
-import { KeyRound, Mail, Mailbox, PenSquare, UserRound } from "lucide-react";
+import { KeyRound, Mail, UserRound } from "lucide-react";
 import Image from "next/image";
 import profile from "../../assets/profile.png";
 import { EditModal } from "@/components/ui/core/NMEditModal";
+import ChangePasswordModal from "@/components/ui/core/NMEditModal/ChangePasswordModal";
 
 export default function Profile() {
     const { user } = useUser()
@@ -40,7 +41,7 @@ export default function Profile() {
                             <Mail />
                             <p className="text-lg">{user?.email}</p>
                         </div>
-                        <EditModal field="email" defaultValue={user?.email} lable="Email"  />
+                        <EditModal field="email" defaultValue={user?.email} lable="Email" />
                     </div>
 
                     <div className="flex justify-between items-center py-5 border-white">
@@ -48,7 +49,7 @@ export default function Profile() {
                             <KeyRound />
                             <p className="text-lg">Change Your password</p>
                         </div>
-                        <PenSquare />
+                        <ChangePasswordModal  />
                     </div>
 
                 </div>

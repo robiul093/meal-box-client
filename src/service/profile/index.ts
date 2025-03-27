@@ -1,9 +1,10 @@
 'use server'
 
 import { cookies } from "next/headers"
+import { FieldValues } from "react-hook-form";
 
 
-export const updateUserName = async (payload: {}) => {
+export const updateUserName = async (payload: FieldValues) => {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/user/update-name`, {
             method: 'PATCH',
@@ -20,7 +21,6 @@ export const updateUserName = async (payload: {}) => {
             (await cookies()).set('accessToken', result.data)
         }
 
-        console.log(result)
 
         return result;
     } catch (err: unknown) {
@@ -30,7 +30,7 @@ export const updateUserName = async (payload: {}) => {
 
 
 
-export const updateUserEmail = async (payload: {}) => {
+export const updateUserEmail = async (payload: FieldValues) => {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/user/update-email`, {
             method: 'PATCH',
@@ -41,14 +41,21 @@ export const updateUserEmail = async (payload: {}) => {
             body: JSON.stringify(payload)
         });
 
-        return res.json();
+        const result = await res.json();
+
+        if (result.success) {
+            (await cookies()).set('accessToken', result.data)
+        }
+
+
+        return result;
     } catch (err: unknown) {
         console.error(err)
     }
 };
 
 
-export const updateUserPassword = async (payload: {}) => {
+export const updateUserPassword = async (payload: FieldValues) => {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/user/update-password`, {
             method: 'PATCH',

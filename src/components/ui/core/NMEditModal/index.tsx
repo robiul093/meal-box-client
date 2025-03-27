@@ -12,7 +12,7 @@ import {
 import { Input } from "../../input"
 import { FieldValues, FormProvider, SubmitHandler, useForm } from "react-hook-form"
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "../../form"
-import { updateUserName } from "@/service/profile"
+import { updateUserEmail, updateUserName } from "@/service/profile"
 import { toast } from "sonner"
 import { useUser } from "@/context/UserContext"
 import { getCurrentUser } from "@/service/AuthService"
@@ -32,7 +32,16 @@ export function EditModal({ field, defaultValue, lable }: IEditProps) {
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         console.log(data)
         try {
-            const res = await updateUserName(data);
+            let res;
+            if (data.name) {
+                console.log('name');
+                res = await updateUserName(data);
+            }
+            else if (data.email) {
+                console.log('email');
+                res = await updateUserEmail(data);
+            }
+            console.log(res);
 
             if (!res.success) toast.error(res.message);
             if (res.success) {
@@ -51,7 +60,7 @@ export function EditModal({ field, defaultValue, lable }: IEditProps) {
             <DialogTrigger asChild>
                 <Button variant="outline"><PenSquare /></Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-[425px]" aria-describedby={undefined}>
                 <DialogHeader>
                     <DialogTitle>Edit profile</DialogTitle>
                 </DialogHeader>
@@ -68,7 +77,7 @@ export function EditModal({ field, defaultValue, lable }: IEditProps) {
                                         <FormItem>
                                             <FormLabel>{lable}</FormLabel>
                                             <FormControl>
-                                                <Input {...field} placeholder={defaultValue || ''} className="w-full" />
+                                                <Input {...field} value={field.value || ''} placeholder={defaultValue || ''} className="w-full" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
