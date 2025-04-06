@@ -22,7 +22,7 @@ export default function Navbar() {
         logout();
         setIsLoading(true);
         if (protectedRoutes.some((route) => pathname.match(route))) {
-            router.push("/")
+            router.push("/profile")
         }
     };
 
@@ -38,7 +38,7 @@ export default function Navbar() {
     ]
 
     return (
-        <header className="border-b w-full">
+        <header className="border-b w-full z">
             <div className="container flex justify-between items-center mx-auto h-16 px-3">
                 <h1 className="text-2xl font-black flex items-center">
                     <Logo />
@@ -74,15 +74,15 @@ export default function Navbar() {
                                     </Avatar>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent>
-                                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                                    <DropdownMenuLabel className='text-center'>{user?.name}</DropdownMenuLabel>
                                     <DropdownMenuSeparator />
                                     <DropdownMenuItem>
                                         <Link href={'/profile'}>Profile</Link>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem>
-                                        <Link href={`${user?.role}`}>Dashboard</Link>
+                                        <Link href={`${user?.role}/dashboard`}>Dashboard</Link>
                                     </DropdownMenuItem>
-                                    <DropdownMenuItem>My Shop</DropdownMenuItem>
+                                    {/* <DropdownMenuItem>My Shop</DropdownMenuItem> */}
 
                                     <DropdownMenuSeparator />
                                     <DropdownMenuItem

@@ -1,4 +1,4 @@
-import { PenSquare } from "lucide-react";
+import { Settings } from "lucide-react";
 import { Button } from "../../button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../../dialog";
 import { FieldValues, FormProvider, SubmitHandler, useForm } from "react-hook-form";
@@ -25,7 +25,7 @@ export default function ChangePasswordModal() {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="outline"><PenSquare /></Button>
+                <Button variant="outline"><Settings /></Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]" aria-describedby={undefined}>
                 <DialogHeader>

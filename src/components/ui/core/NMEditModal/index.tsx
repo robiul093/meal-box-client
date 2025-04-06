@@ -1,6 +1,6 @@
 'use client'
 
-import { PenSquare } from "lucide-react"
+import { Settings } from "lucide-react"
 import { Button } from "../../button"
 import {
     Dialog,
@@ -58,7 +58,7 @@ export function EditModal({ field, defaultValue, lable }: IEditProps) {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="outline"><PenSquare /></Button>
+                <Button variant="outline"><Settings /></Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]" aria-describedby={undefined}>
                 <DialogHeader>

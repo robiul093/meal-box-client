@@ -96,4 +96,4 @@ export const updateMeal = async (id: string, updateData: FieldValues) => {
     } catch (err: unknown) {
         console.error(err)
     }
-}
+};

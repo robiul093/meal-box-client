@@ -39,4 +39,25 @@ export const orderResponse = async (payload: { orderId: string, status: string }
     } catch (err: unknown) {
         console.error(err)
     }
+};
+
+
+
+export const getPopularMeal = async () => {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/providers/popular-meal`,{
+            method: 'GET',
+            headers: {
+                Authorization: (await cookies()).get('accessToken')!.value
+            },
+
+            next: {
+                tags: ["Order"]
+            } 
+        });
+
+        return res.json();
+    } catch (err: unknown) {
+        console.error(err)
+    }
 }

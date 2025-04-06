@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCurrentUser } from "./service/AuthService";
 
+const protectedRoutes = [
+    { path: '/customer', role: 'customer' },
+    { path: '/provider', role: 'provider' },
+    { path: '/admin', role: 'admin' },
+]
 const authRoute = ['/login', '/register'];
 
 export const middleware = async (request: NextRequest) => {
@@ -13,9 +18,17 @@ export const middleware = async (request: NextRequest) => {
         }
         else {
             return NextResponse.redirect(
-                new URL(`http://localhost:3000/login?redirectPath=${pathname}`, request.url)
+                new URL(`${process.env.NEXT_PUBLIC_FRONTEND_BASE_URL}/login?redirectPath=${pathname}`, request.url)
             )
         }
+    }
+    else {
+        for(const route of protectedRoutes){
+            if(pathname.startsWith(route.path) && currentUser.role !== route.role){
+                return NextResponse.redirect(new URL('/login', request.url))
+            }
+        }
+        return NextResponse.next();
     }
 };
 
@@ -24,9 +37,7 @@ export const config = {
     matcher: [
         '/login',
         '/profile',
-        '/customer',
-        // '/customer:/',
-        '/provider',
-        // '/provider:/'
+        '/customer/:path*',
+        '/provider/:path*',
     ]
 }
