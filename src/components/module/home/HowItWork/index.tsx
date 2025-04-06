@@ -7,6 +7,7 @@ export default function HowItWorkSection() {
       <div className='text-center mb-12'>
         <h2 className='text-2xl text-[#484848]'>HOW IT WORKS</h2>
       </div>
+      
       <div className='flex justify-evenly items-center text-center'>
         
         <div className='w-[300px]'>

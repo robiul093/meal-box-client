@@ -44,7 +44,7 @@ export default function Navbar() {
                     <Logo />
                     Green Bite
                 </h1>
-                <div className="max-w-md flex-grow">
+                <div className="max-w-md text-lg">
                     {/* <input
                         type="text"
                         placeholder="Search for products"
@@ -97,13 +97,13 @@ export default function Navbar() {
                             </DropdownMenu>
                         </> : <>
                             <Link href={'/login'}>
-                                <Button variant="outline" className="rounded-sm bg-[#60ba62] text-white">
+                                <Button variant="outline" className="rounded-sm bg-[#60ba62] text-white cursor-pointer">
                                     Login
                                 </Button>
                             </Link>
 
                             <Link href={'/register'}>
-                                <Button variant="outline" className="rounded-sm bg-[#60ba62] text-white">
+                                <Button variant="outline" className="rounded-sm bg-[#60ba62] text-white cursor-pointer">
                                     Register
                                 </Button>
                             </Link>
