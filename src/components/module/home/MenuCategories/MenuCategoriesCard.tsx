@@ -3,7 +3,7 @@ import Image, { StaticImageData } from 'next/image'
 export default function MenuCategoriesCard({ title , bgImg}: { title: string, bgImg: string | StaticImageData }) {
     return (
         <div
-            className="relative w-64 h-72 rounded-md overflow-hidden shadow-lg group cursor-pointer"
+            className="relative w-60 h-72 rounded-md overflow-hidden shadow-lg group cursor-pointer"
         >
             <Image
                 src={bgImg}

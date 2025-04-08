@@ -20,7 +20,7 @@ export default function AllOrder() {
     const statusColor = {
         pending: "bg-yellow-300 text-yellow-900",
         "in-progress": "bg-blue-400 text-blue-900",
-        completed: "bg-green-400 text-green-900",
+        delivered: "bg-green-400 text-green-900",
         cancelled: "bg-red-400 text-red-900",
     }
 
@@ -100,7 +100,7 @@ export default function AllOrder() {
                                             className="px-2 py-1 rounded-md border bg-white focus:outline-none focus:ring-2 focus:ring-blue-400">
                                             <option value="pending">Pending</option>
                                             <option value="in-progress">In Progress</option>
-                                            <option value="completed">Completed</option>
+                                            <option value="delivered">Delivered</option>
                                             <option value="cancelled">Cancelled</option>
                                         </select>
                                     </TableCell>

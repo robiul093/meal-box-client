@@ -46,9 +46,8 @@ export default function CustomerOrdersPage() {
 
     useEffect(() => {
         getCustomerOrders();
-    }, [getCustomerOrders]); // ✅ No unnecessary semicolon
+    }, [getCustomerOrders]);
 
-    console.log(orders);
 
     return (
         <div>

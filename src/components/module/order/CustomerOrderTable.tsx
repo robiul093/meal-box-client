@@ -10,10 +10,10 @@ type Props = {
 export default function CustomerOrderTable({ order, idx }: Props) {
     const status = order.status;
     const statusColor = {
-        pending: "bg-yellow-100 text-yellow-700",
-        "in-progress": "bg-blue-100 text-blue-700",
-        completed: "bg-green-100 text-green-700",
-        cancelled: "bg-red-100 text-red-700",
+        pending: "bg-yellow-400",
+        "in-progress": "bg-blue-400",
+        delivered: "bg-green-400",
+        cancelled: "bg-red-400",
     }
 
     return (
@@ -28,7 +28,7 @@ export default function CustomerOrderTable({ order, idx }: Props) {
                     <TableCell>{meal.quantity}</TableCell>
                     <TableCell className="text-right">${(meal.mealId.price * meal.quantity).toFixed(2)}</TableCell>
                     <TableCell className="text-center">
-                        <span className={`px-2 py-1 rounded text-white ${statusColor[status] || "bg-gray-100 text-gray-700"}`}>
+                        <span className={`px-2 py-1 rounded font-semibold ${statusColor[status] || "bg-gray-100 text-gray-700"}`}>
                             {order.status}
                         </span>
                     </TableCell>

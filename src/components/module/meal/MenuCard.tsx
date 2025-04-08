@@ -29,6 +29,11 @@ export default function MenuCard({ menu }: { menu: TMeal }) {
         };
 
         try {
+
+            if (!token) {
+                throw new Error('Only register customer can order');
+            }
+
             const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/customers/order`, {
                 method: 'POST',
                 headers: {
@@ -65,7 +70,7 @@ export default function MenuCard({ menu }: { menu: TMeal }) {
                 <Image
                     src={menu?.image || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtGM4EgNZJyeptuJbnf7II20MaUutufdhUqw&s"}
                     alt="foodCard"
-                    width={500} 
+                    width={500}
                     height={300}
                     className="w-full"
                     objectFit="cover"

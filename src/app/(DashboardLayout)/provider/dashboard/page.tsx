@@ -6,7 +6,7 @@ import "@smastrom/react-rating/style.css";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 
-type OrderStatus = "pending" | "in-progress" | "completed" | "cancelled";
+type OrderStatus = "pending" | "in-progress" | "delivered" | "cancelled";
 
 export default async function ProviderHomePage() {
 
@@ -19,7 +19,7 @@ export default async function ProviderHomePage() {
   const statusColor = {
     pending: "bg-yellow-200 text-yellow-700",
     "in-progress": "bg-blue-200 text-blue-700",
-    completed: "bg-green-200 text-green-700",
+    delivered: "bg-green-200 text-green-700",
     cancelled: "bg-red-200 text-red-700",
   }
   const statusCounts: Record<OrderStatus, number> = orders?.reduce(
@@ -30,7 +30,7 @@ export default async function ProviderHomePage() {
     {
       pending: 0,
       "in-progress": 0,
-      completed: 0,
+      delivered: 0,
       cancelled: 0,
     }
   );
@@ -55,7 +55,7 @@ export default async function ProviderHomePage() {
               </div>
               <div className='flex gap-3'>
                 <h3>Delivered :</h3>
-                <p>{statusCounts?.completed}</p>
+                <p>{statusCounts?.delivered}</p>
               </div>
             </div>
           </div>

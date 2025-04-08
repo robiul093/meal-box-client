@@ -47,7 +47,7 @@ export default function MenuCategoriesSection() {
     
     return (
         <div className="my-24 w-[80%] mx-auto">
-            <div className='text-center mb-16'>
+            <div className='text-center mb-14'>
                 <h2 className='text-2xl text-[#484848]'>MENU CATEGORIES</h2>
             </div>
 

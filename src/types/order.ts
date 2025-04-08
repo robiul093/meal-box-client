@@ -30,6 +30,6 @@ export type TOrder = {
     dietaryPreferences: string;
     dietaryCategory: string;
     totalPrice: number;
-    status: "pending" | "in-progress" | "completed" | "cancelled";
+    status: "pending" | "in-progress" | "delivered" | "cancelled";
     __v?: number;
 };
