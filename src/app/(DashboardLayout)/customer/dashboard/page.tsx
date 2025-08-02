@@ -28,12 +28,8 @@ export default async function CustomerHomePage() {
 
   const activeOrderDbDate = activeOrders[0]?.createdAt;
   const pastOrderDbDate = pastOrders[0]?.createdAt;
-  // const 
-  // const pastOrderDate = formatDatePretty(pastOrderDbDate)
-  // console.log(pastOrderDbDate);
+  
 
-
-  // console.log(activeOrders, pastOrders);
   const statusCounts: Record<OrderStatus, number> = orders?.reduce(
     (acc: Record<OrderStatus, number>, order: TOrder) => {
       acc[order.status] = (acc[order.status] || 0) + 1;
@@ -96,14 +92,14 @@ export default async function CustomerHomePage() {
 
           <div className='grid grid-cols-auto-fit gap-4 w-full'>
 
-            <div className='flex gap-3'>
+            <div className='flex gap-2'>
               <h3>Last order placed :</h3>
               <p>{activeOrders.length ? formatDatePretty(activeOrderDbDate) : 'No order'}</p>
             </div>
 
             <div className='flex gap-3'>
               <h3>Last order status :</h3>
-              <p>{pastOrders.length ? formatDatePretty(pastOrderDbDate) : 'No order'}</p>
+              <p>{activeOrders.length ? activeOrders[0].status : 'No order'}</p>
             </div>
 
             {/* <div className='flex gap-3'>
